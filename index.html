@@ -1003,11 +1003,9 @@
             if (!subtotalEl || !totalEl) return;
             
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const shippingCost = subtotal > 0 ? 25000 : 0;
-            const total = subtotal + shippingCost;
             
             subtotalEl.textContent = formatRupiah(subtotal);
-            totalEl.textContent = formatRupiah(total);
+            totalEl.textContent = formatRupiah(subtotal);
         }
 
         // Add to Cart
