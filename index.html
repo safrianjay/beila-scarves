@@ -118,8 +118,8 @@
     <section class="relative h-screen w-full flex items-end pb-24 md:pb-32 overflow-hidden border-b border-black/10">
         <div class="absolute inset-0 z-0 bg-gray-100">
             <img 
-                src="https://images.unsplash.com/photo-1539622505255-14470196dcfe?q=80&w=1200&auto=format&fit=crop" 
-                alt="High-Performance Modest Athlete"
+                src="beila-hero.jpg" 
+                alt="Beila Premium Hijabs and Scarves"
                 class="w-full h-full object-cover opacity-60 grayscale mix-blend-multiply"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent z-10"></div>
@@ -535,7 +535,7 @@
     <div id="chart-overlay" class="fixed inset-0 bg-black/0 z-40 transition-all duration-500 opacity-0 pointer-events-none"></div>
 
     <!-- Chart Panel -->
-    <div id="chart-panel" class="fixed top-0 right-0 h-screen w-[35vw] max-w-[500px] bg-white border-l border-black/10 z-50 shadow-2xl translate-x-full transition-transform duration-500 flex flex-col overflow-hidden">
+    <div id="chart-panel" class="fixed top-0 right-0 h-screen w-full md:w-[35vw] md:max-w-[500px] bg-white border-l border-black/10 z-50 shadow-2xl translate-x-full transition-transform duration-500 flex flex-col overflow-hidden">
         
         <!-- Panel Header -->
         <div class="flex items-center justify-between px-6 md:px-8 py-6 border-b border-black/10">
@@ -561,15 +561,15 @@
         </div>
 
         <!-- Panel Footer -->
-        <div class="border-t border-black/10 px-6 md:px-8 py-6 space-y-4 bg-white">
+        <div class="border-t border-black/10 px-4 md:px-8 py-4 md:py-6 space-y-3 md:space-y-4 bg-white">
             <!-- Subtotal -->
-            <div class="flex justify-between items-center text-sm font-tech">
+            <div class="flex justify-between items-center text-xs md:text-sm font-tech gap-2">
                 <span class="text-gray-600" data-i18n="cart-subtotal">Subtotal</span>
-                <span class="font-bold text-black">Rp 0</span>
+                <span id="subtotal-amount" class="font-bold text-black">Rp 0</span>
             </div>
             
             <!-- Shipping -->
-            <div class="flex justify-between items-center text-sm font-tech">
+            <div class="flex justify-between items-center text-xs md:text-sm font-tech gap-2">
                 <span class="text-gray-600" data-i18n="cart-shipping">Shipping</span>
                 <span class="font-bold text-black" data-i18n="cart-calculated">Calculated at checkout</span>
             </div>
@@ -580,16 +580,16 @@
             <!-- Total -->
             <div class="flex justify-between items-center">
                 <span class="text-gray-600 text-xs tracking-[0.2em] uppercase font-bold font-tech" data-i18n="cart-total">Total</span>
-                <span class="text-xl font-fluid font-black text-black">Rp 0</span>
+                <span id="total-amount" class="text-xl font-fluid font-black text-black">Rp 0</span>
             </div>
 
             <!-- Checkout Button -->
-            <button class="w-full bg-black text-white px-6 py-4 text-[11px] tracking-[0.2em] font-bold uppercase hover:bg-transparent hover:text-black border border-black transition-colors duration-300 font-tech mt-6" data-i18n="cart-checkout">
+            <button class="w-full bg-black text-white px-4 md:px-6 py-3 md:py-4 text-[10px] md:text-[11px] tracking-[0.2em] font-bold uppercase hover:bg-transparent hover:text-black border border-black transition-colors duration-300 font-tech mt-4 md:mt-6" data-i18n="cart-checkout">
                 Proceed to Checkout
             </button>
 
             <!-- Continue Shopping -->
-            <button class="w-full bg-white text-black px-6 py-4 text-[11px] tracking-[0.2em] font-bold uppercase hover:bg-gray-100 border border-black/20 transition-colors duration-300 font-tech" data-i18n="cart-continue">
+            <button class="w-full bg-white text-black px-4 md:px-6 py-3 md:py-4 text-[10px] md:text-[11px] tracking-[0.2em] font-bold uppercase hover:bg-gray-100 border border-black/20 transition-colors duration-300 font-tech" data-i18n="cart-continue">
                 Continue Shopping
             </button>
         </div>
@@ -898,10 +898,11 @@
         const chartOverlay = document.getElementById('chart-overlay');
         const chartClose = document.getElementById('chart-close');
         const chartItems = document.getElementById('chart-items');
-        const continueShoppingBtn = chartPanel.querySelector('button:last-of-type');
+        const continueShoppingBtn = chartPanel ? chartPanel.querySelector('button:last-of-type') : null;
 
         // Update Cart Badge
         function updateCartBadge() {
+            if (!cartBadge) return;
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             console.log('Badge update - Total items:', totalItems, 'Badge element:', cartBadge);
             
@@ -925,6 +926,8 @@
 
         // Flying Animation
         function createFlyingAnimation(button) {
+            if (!chartTrigger || !button) return;
+            
             const buttonRect = button.getBoundingClientRect();
             const chartRect = chartTrigger.getBoundingClientRect();
 
@@ -959,6 +962,8 @@
 
         // Update Cart Display
         function updateCartDisplay() {
+            if (!chartItems) return;
+            
             if (cart.length === 0) {
                 chartItems.innerHTML = '<div class="text-center py-12"><p class="text-gray-400 text-sm tracking-wide font-tech" data-i18n="cart-empty">Your chart is empty</p></div>';
             } else {
@@ -992,16 +997,17 @@
 
         // Update Totals
         function updateCartTotals() {
-            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const subtotalEl = chartPanel.querySelectorAll('.flex.justify-between')[0];
-            const totalEl = chartPanel.querySelectorAll('.flex.justify-between')[1];
+            const subtotalEl = document.getElementById('subtotal-amount');
+            const totalEl = document.getElementById('total-amount');
             
-            if (subtotalEl) {
-                subtotalEl.querySelector('span:last-child').textContent = formatRupiah(subtotal);
-            }
-            if (totalEl) {
-                totalEl.querySelector('span:last-child').textContent = formatRupiah(subtotal);
-            }
+            if (!subtotalEl || !totalEl) return;
+            
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shippingCost = subtotal > 0 ? 25000 : 0;
+            const total = subtotal + shippingCost;
+            
+            subtotalEl.textContent = formatRupiah(subtotal);
+            totalEl.textContent = formatRupiah(total);
         }
 
         // Add to Cart
@@ -1073,35 +1079,41 @@
         });
 
         function openChartPanel() {
-            chartPanel.classList.remove('translate-x-full');
-            chartOverlay.classList.remove('opacity-0', 'pointer-events-none');
-            chartOverlay.classList.add('bg-black/30');
-            document.body.style.overflow = 'hidden';
+            if (chartPanel && chartOverlay) {
+                chartPanel.classList.remove('translate-x-full');
+                chartOverlay.classList.remove('opacity-0', 'pointer-events-none');
+                chartOverlay.classList.add('bg-black/30');
+                document.body.style.overflow = 'hidden';
+            }
         }
 
         function closeChartPanel() {
-            chartPanel.classList.add('translate-x-full');
-            chartOverlay.classList.add('opacity-0', 'pointer-events-none');
-            chartOverlay.classList.remove('bg-black/30');
-            document.body.style.overflow = '';
+            if (chartPanel && chartOverlay) {
+                chartPanel.classList.add('translate-x-full');
+                chartOverlay.classList.add('opacity-0', 'pointer-events-none');
+                chartOverlay.classList.remove('bg-black/30');
+                document.body.style.overflow = '';
+            }
         }
 
-        chartTrigger.addEventListener('click', openChartPanel);
-        chartClose.addEventListener('click', closeChartPanel);
-        chartOverlay.addEventListener('click', closeChartPanel);
-        continueShoppingBtn.addEventListener('click', closeChartPanel);
+        if (chartTrigger) chartTrigger.addEventListener('click', openChartPanel);
+        if (chartClose) chartClose.addEventListener('click', closeChartPanel);
+        if (chartOverlay) chartOverlay.addEventListener('click', closeChartPanel);
+        if (continueShoppingBtn) continueShoppingBtn.addEventListener('click', closeChartPanel);
 
         // Close on escape key
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !chartPanel.classList.contains('translate-x-full')) {
+            if (chartPanel && e.key === 'Escape' && !chartPanel.classList.contains('translate-x-full')) {
                 closeChartPanel();
             }
         });
 
         // Initialize cart display
-        console.log('Initializing cart with items:', cart);
-        updateCartDisplay();
-        updateCartBadge();
+        if (chartPanel && chartItems) {
+            console.log('Initializing cart with items:', cart);
+            updateCartDisplay();
+            updateCartBadge();
+        }
     </script>
 </body>
 </html>
