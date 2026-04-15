@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beila Scarves | High-Performance Modesty</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #FFFFFF; 
+            color: #000000; 
+        }
+        
+        /* Font Classes */
+        .font-fluid { font-family: 'Playfair Display', serif; }
+        .font-tech { font-family: 'Inter', sans-serif; }
+        
+        ::selection {
+            background-color: #000000;
+            color: #FFFFFF;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+    </style>
+</head>
+<body class="selection:bg-black selection:text-white rounded-none font-tech">
+
+    <nav class="fixed top-0 w-full z-50 border-b border-black/10 backdrop-blur-md bg-white/90">
+        <div class="max-w-[1600px] mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-8">
+                
+                <div class="flex items-center justify-center w-11 h-11 bg-white rounded-full border border-black/10 shadow-sm shrink-0">
+                    <span class="font-fluid font-black text-black text-[13px] tracking-tighter uppercase italic pr-[2px]">Beila</span>
+                </div>
+
+                <div class="hidden md:flex gap-8 text-[11px] uppercase tracking-[0.2em] font-bold text-gray-500 pl-4">
+                    <a href="#tech" class="hover:text-black transition-colors">Engineering</a>
+                    <a href="#collection" class="hover:text-black transition-colors">Collections</a>
+                    <a href="#campaign" class="hover:text-black transition-colors">Campaign</a>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-6">
+                <button class="hidden md:block text-[11px] tracking-[0.15em] uppercase bg-black text-white px-6 py-2.5 font-bold hover:bg-gray-800 transition-colors duration-300 rounded-none border border-black">
+                    Equip Now
+                </button>
+                <button id="chart-trigger" class="text-black hover:text-gray-600 transition-colors">
+                    <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                </button>
+                <button class="md:hidden text-black" id="mobile-menu-btn">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative h-screen w-full flex items-end pb-24 md:pb-32 overflow-hidden border-b border-black/10">
+        <div class="absolute inset-0 z-0 bg-gray-100">
+            <img 
+                src="beila-hero.jpg" 
+                alt="High-Performance Modest Athlete"
+                class="w-full h-full object-cover opacity-60 grayscale mix-blend-multiply"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent z-10"></div>
+        </div>
+
+        <div class="relative z-20 max-w-[1600px] mx-auto px-4 md:px-8 w-full">
+            <div class="max-w-3xl">
+                <div class="animate-on-scroll flex items-center gap-3 mb-6">
+                    <div class="h-[1px] w-8 bg-black"></div>
+                    <span class="text-black text-[10px] tracking-[0.3em] uppercase font-bold font-tech">Protocol 01 // High-Velocity</span>
+                </div>
+                
+                <h1 class="animate-on-scroll delay-100 text-5xl md:text-7xl lg:text-[5.5rem] font-fluid font-black tracking-tight leading-[0.9] mb-6 text-black italic">
+                    Engineered <br />For Coverage.<br />
+                    <span class="text-gray-400">Designed <br />For Motion.</span>
+                </h1>
+                
+                <p class="animate-on-scroll delay-200 text-gray-600 text-sm md:text-base max-w-lg mb-10 tracking-wide font-medium leading-relaxed font-tech">
+                    Zero-shift architecture meets aerodynamic drape. High-impact sports hijabs engineered to eliminate heat retention and friction without compromising opacity.
+                </p>
+
+                <div class="animate-on-scroll delay-300 flex flex-col sm:flex-row gap-4">
+                    <button class="bg-black text-white px-8 py-4 text-[11px] tracking-[0.2em] font-bold uppercase hover:bg-transparent hover:text-black border border-black transition-colors duration-300 flex items-center justify-center gap-2 rounded-none font-tech">
+                        Explore Hijab Tech <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="campaign" class="py-24 bg-white border-b border-black/10">
+        <div class="max-w-[1600px] mx-auto">
+            
+            <div class="text-center mb-12 animate-on-scroll">
+                <h2 class="text-4xl font-fluid font-black tracking-widest uppercase italic">BEILA</h2>
+                <p class="text-[11px] font-bold tracking-[0.25em] uppercase mt-4 font-tech">Spring Summer 2026<br/>Collection</p>
+                
+                <div class="flex justify-center gap-8 mt-10 text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400 font-tech">
+                    <a href="#" class="text-black border-b border-black pb-1">Products</a>
+                    <a href="#" class="hover:text-black transition-colors">Looks</a>
+                    <a href="#" class="hover:text-black transition-colors">Campaign</a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-black/10 border-y border-black/10">
+                <a href="#" class="relative aspect-square md:aspect-[4/5] bg-gray-100 group overflow-hidden animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1584441405886-bc91be61e56a?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" />
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <span class="text-white text-xs tracking-[0.2em] font-bold uppercase drop-shadow-md">Sport Hijabs</span>
+                    </div>
+                </a>
+
+                <a href="#" class="relative aspect-square md:aspect-[4/5] bg-gray-100 group overflow-hidden animate-on-scroll delay-100">
+                    <img src="https://images.unsplash.com/photo-1596455607563-ad6193f76b17?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" />
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <span class="text-white text-xs tracking-[0.2em] font-bold uppercase drop-shadow-md">Base Layers</span>
+                    </div>
+                </a>
+
+                <a href="#" class="relative aspect-square md:aspect-[4/5] bg-gray-100 group overflow-hidden animate-on-scroll delay-200">
+                    <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" />
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <span class="text-white text-xs tracking-[0.2em] font-bold uppercase drop-shadow-md">Activewear</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="tech" class="py-24 max-w-[1600px] mx-auto px-4 md:px-8">
+        <div class="animate-on-scroll mb-12">
+            <h2 class="text-4xl md:text-5xl font-fluid font-black tracking-tight uppercase text-black italic">Modest Innovation</h2>
+            <p class="text-gray-500 text-xs tracking-[0.2em] uppercase mt-4 font-tech font-bold">Solving the Athlete's Friction Points</p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 auto-rows-[240px] md:auto-rows-[300px] gap-[1px] bg-black/10 border border-black/10">
+            <div class="col-span-2 md:col-span-2 row-span-2 bg-white p-8 md:p-12 flex flex-col justify-between hover:bg-gray-50 transition-colors duration-500">
+                <i data-lucide="wind" class="text-black mb-4 w-8 h-8"></i>
+                <div>
+                    <span class="text-[10px] text-gray-500 tracking-[0.2em] uppercase mb-4 block font-tech font-bold">Problem: Heat Trapping</span>
+                    <h3 class="text-3xl md:text-4xl font-fluid font-black tracking-tight uppercase mb-4 text-black italic">Aero-Knit Scalp Ventilation</h3>
+                    <p class="text-gray-600 text-sm tracking-wide leading-relaxed max-w-sm font-tech">
+                        Engineered with mapped micro-perforations exclusively at the crown and nape. Facilitates rapid thermal exhaust and sweat wicking while maintaining 100% material opacity everywhere else.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-span-2 md:col-span-1 bg-[#F9F9F9] p-6 flex flex-col justify-between group">
+                <i data-lucide="crosshair" class="text-gray-400 group-hover:text-black transition-colors duration-300 w-6 h-6"></i>
+                <div>
+                    <span class="text-[10px] text-gray-500 tracking-[0.2em] uppercase mb-2 block font-tech font-bold">Problem: Slipping</span>
+                    <h4 class="text-xl font-fluid font-black tracking-tight uppercase text-black italic">Zero-Shift Arch.</h4>
+                    <p class="text-[11px] text-gray-600 tracking-wide mt-2 font-tech">Medical-grade silicone micro-ribbing locks the hijab in place during impact.</p>
+                </div>
+            </div>
+
+            <div class="col-span-2 md:col-span-1 bg-[#F9F9F9] p-6 flex flex-col justify-between group">
+                <i data-lucide="headphones" class="text-gray-400 group-hover:text-black transition-colors duration-300 w-6 h-6"></i>
+                <div>
+                    <span class="text-[10px] text-gray-500 tracking-[0.2em] uppercase mb-2 block font-tech font-bold">Problem: Earbuds</span>
+                    <h4 class="text-xl font-fluid font-black tracking-tight uppercase text-black italic">Acoustic Porting</h4>
+                    <p class="text-[11px] text-gray-600 tracking-wide mt-2 font-tech">Invisible, sonic-welded slits at the ears allow instant audio access.</p>
+                </div>
+            </div>
+
+            <div class="col-span-2 bg-white p-6 md:p-8 flex items-center justify-between group cursor-pointer hover:bg-gray-50 transition-colors">
+                <div>
+                    <span class="text-[10px] text-gray-500 tracking-[0.2em] uppercase mb-2 block font-tech font-bold">Construction</span>
+                    <h4 class="text-2xl font-fluid font-black tracking-tight uppercase text-black italic">Aerodynamic Drape</h4>
+                    <p class="text-[11px] text-gray-600 tracking-wide mt-2 max-w-md font-tech">Precision tailoring eliminates shoulder bunching and fabric drag.</p>
+                </div>
+                <i data-lucide="arrow-right" class="text-gray-300 group-hover:text-black transition-colors w-6 h-6"></i>
+            </div>
+        </div>
+    </section>
+
+    <section id="collection" class="py-24 bg-[#F9F9F9] border-y border-black/10 overflow-hidden">
+        <div class="max-w-[1600px] mx-auto px-4 md:px-8 mb-12 flex justify-between items-end">
+            <div class="animate-on-scroll">
+                <h2 class="text-4xl md:text-5xl font-fluid font-black tracking-tight uppercase text-black italic">The Drop</h2>
+                <p class="text-gray-500 text-xs tracking-[0.2em] uppercase mt-4 font-tech font-bold">Performance Series 01</p>
+            </div>
+            <a href="#" class="hidden md:flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase font-bold text-black hover:text-gray-500 transition-colors font-tech">
+                View All Configurations <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+        </div>
+
+        <div class="flex overflow-x-auto hide-scrollbar pl-4 md:pl-8 pr-4 md:pr-8 gap-[1px] snap-x snap-mandatory">
+            
+            <div class="animate-on-scroll min-w-[85vw] md:min-w-[400px] snap-start group relative border border-black/10 bg-white">
+                <div class="aspect-[3/4] bg-gray-100 relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1584441405886-bc91be61e56a?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" />
+                    <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-20">
+                        <button class="w-full bg-black text-white py-4 text-[11px] tracking-[0.2em] font-bold uppercase hover:bg-white hover:text-black border border-black transition-colors font-tech">
+                            Quick Add — Rp 85.000
+                        </button>
+                    </div>
+                </div>
+                <div class="p-6 border-t border-black/10 flex justify-between items-start">
+                    <div>
+                        <h4 class="text-sm font-bold tracking-tight uppercase text-black font-tech">Velocity Pro Sport Hijab</h4>
+                        <p class="text-[10px] text-gray-500 tracking-[0.1em] uppercase mt-1 font-tech">Full Coverage / Carbon Black</p>
+                    </div>
+                    <span class="text-[10px] font-mono text-gray-400">[01]</span>
+                </div>
+            </div>
+
+            <div class="animate-on-scroll delay-100 min-w-[85vw] md:min-w-[400px] snap-start group relative border border-black/10 bg-white">
+                <div class="aspect-[3/4] bg-gray-100 relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1596455607563-ad6193f76b17?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" />
+                    <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-20">
+                        <button class="w-full bg-black text-white py-4 text-[11px] tracking-[0.2em] font-bold uppercase hover:bg-white hover:text-black border border-black transition-colors font-tech">
+                            Quick Add — Rp 45.000
+                        </button>
+                    </div>
+                </div>
+                <div class="p-6 border-t border-black/10 flex justify-between items-start">
+                    <div>
+                        <h4 class="text-sm font-bold tracking-tight uppercase text-black font-tech">Aero-Knit Underscarf</h4>
+                        <p class="text-[10px] text-gray-500 tracking-[0.1em] uppercase mt-1 font-tech">Base Layer / Titanium Grey</p>
+                    </div>
+                    <span class="text-[10px] font-mono text-gray-400">[02]</span>
+                </div>
+            </div>
+            
+            <div class="animate-on-scroll delay-200 min-w-[85vw] md:min-w-[400px] snap-start group relative border border-black/10 bg-white">
+                <div class="aspect-[3/4] bg-gray-100 relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" />
+                    <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-20">
+                        <button class="w-full bg-black text-white py-4 text-[11px] tracking-[0.2em] font-bold uppercase hover:bg-white hover:text-black border border-black transition-colors font-tech">
+                            Quick Add — Rp 65.000
+                        </button>
+                    </div>
+                </div>
+                <div class="p-6 border-t border-black/10 flex justify-between items-start">
+                    <div>
+                        <h4 class="text-sm font-bold tracking-tight uppercase text-black font-tech">Thermal Run Snood</h4>
+                        <p class="text-[10px] text-gray-500 tracking-[0.1em] uppercase mt-1 font-tech">Neck Gaiter / Matte Cobalt</p>
+                    </div>
+                    <span class="text-[10px] font-mono text-gray-400">[03]</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chart Panel Overlay -->
+    <div id="chart-overlay" class="fixed inset-0 bg-black/0 z-40 transition-all duration-500 opacity-0 pointer-events-none"></div>
+
+    <!-- Chart Panel -->
+    <div id="chart-panel" class="fixed top-0 right-0 h-screen w-[35vw] max-w-[500px] bg-white border-l border-black/10 z-50 shadow-2xl translate-x-full transition-transform duration-500 flex flex-col overflow-hidden">
+        
+        <!-- Panel Header -->
+        <div class="flex items-center justify-between px-6 md:px-8 py-6 border-b border-black/10">
+            <h2 class="text-xl font-fluid font-black tracking-tight uppercase text-black italic">
+                Order Summary
+            </h2>
+            <button id="chart-close" class="text-black hover:text-gray-600 transition-colors hover:bg-gray-100 p-2 rounded-none">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <!-- Panel Content -->
+        <div class="flex-1 overflow-y-auto px-6 md:px-8 py-6 hide-scrollbar">
+            <!-- Chart Items -->
+            <div id="chart-items" class="space-y-6">
+                <!-- Items will be dynamically added here -->
+                <div class="text-center py-12">
+                    <p class="text-gray-400 text-sm tracking-wide font-tech">
+                        Your chart is empty
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Panel Footer -->
+        <div class="border-t border-black/10 px-6 md:px-8 py-6 space-y-4 bg-white">
+            <!-- Subtotal -->
+            <div class="flex justify-between items-center text-sm font-tech">
+                <span class="text-gray-600">Subtotal</span>
+                <span class="font-bold text-black">Rp 0</span>
+            </div>
+            
+            <!-- Shipping -->
+            <div class="flex justify-between items-center text-sm font-tech">
+                <span class="text-gray-600">Shipping</span>
+                <span class="font-bold text-black">Calculated at checkout</span>
+            </div>
+
+            <!-- Divider -->
+            <div class="h-[1px] bg-black/10 my-2"></div>
+
+            <!-- Total -->
+            <div class="flex justify-between items-center">
+                <span class="text-gray-600 text-xs tracking-[0.2em] uppercase font-bold font-tech">Total</span>
+                <span class="text-xl font-fluid font-black text-black">Rp 0</span>
+            </div>
+
+            <!-- Checkout Button -->
+            <button class="w-full bg-black text-white px-6 py-4 text-[11px] tracking-[0.2em] font-bold uppercase hover:bg-transparent hover:text-black border border-black transition-colors duration-300 font-tech mt-6">
+                Proceed to Checkout
+            </button>
+
+            <!-- Continue Shopping -->
+            <button class="w-full bg-white text-black px-6 py-4 text-[11px] tracking-[0.2em] font-bold uppercase hover:bg-gray-100 border border-black/20 transition-colors duration-300 font-tech">
+                Continue Shopping
+            </button>
+        </div>
+    </div>
+
+    <footer class="bg-white pt-24 pb-8 border-t border-black/10">
+        <div class="max-w-[1600px] mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-24">
+                
+                <div class="md:col-span-4">
+                    <div class="flex items-center justify-center w-16 h-16 bg-white rounded-full border border-black/10 shadow-sm shrink-0 mb-6">
+                        <span class="font-fluid font-black text-black text-xl tracking-tighter uppercase italic pr-[2px]">Beila</span>
+                    </div>
+                    <p class="text-gray-600 text-xs tracking-wide leading-relaxed max-w-xs font-tech">
+                        Precision engineering for the modern modest athlete. Uncompromising performance meets structural integrity.
+                    </p>
+                </div>
+
+                <div class="md:col-span-4 border border-black/10 p-6 relative overflow-hidden group hover:border-black/30 transition-colors">
+                    <div class="absolute top-0 right-0 p-4 opacity-[0.03]">
+                        <i data-lucide="wind" class="w-16 h-16"></i>
+                    </div>
+                    <h4 class="text-[11px] tracking-[0.2em] uppercase font-bold mb-2 text-black font-tech">Access the Lab</h4>
+                    <p class="text-gray-500 text-[10px] tracking-wide mb-6 font-tech">Join the briefing for early access to R&D drops and experimental hijab tech.</p>
+                    
+                    <form class="flex border-b border-black/20 focus-within:border-black transition-colors pb-2" onsubmit="event.preventDefault();">
+                        <input type="email" placeholder="ENTER EMAIL ADDRESS" class="bg-transparent text-xs tracking-widest w-full outline-none placeholder:text-gray-400 text-black font-tech" />
+                        <button type="submit" class="text-gray-400 hover:text-black transition-colors">
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="md:col-span-2 flex flex-col gap-4 font-tech">
+                    <h5 class="text-[10px] tracking-[0.3em] text-gray-400 uppercase mb-2 font-bold">Equipment</h5>
+                    <a href="#" class="text-xs tracking-wide text-gray-600 hover:text-black transition-colors">Sport Hijabs</a>
+                    <a href="#" class="text-xs tracking-wide text-gray-600 hover:text-black transition-colors">Underscarves</a>
+                    <a href="#" class="text-xs tracking-wide text-gray-600 hover:text-black transition-colors">Accessories</a>
+                </div>
+
+                <div class="md:col-span-2 flex flex-col gap-4 font-tech">
+                    <h5 class="text-[10px] tracking-[0.3em] text-gray-400 uppercase mb-2 font-bold">Support</h5>
+                    <a href="#" class="text-xs tracking-wide text-gray-600 hover:text-black transition-colors">Fabric Care</a>
+                    <a href="#" class="text-xs tracking-wide text-gray-600 hover:text-black transition-colors">Fit Guide</a>
+                    <a href="#" class="text-xs tracking-wide text-gray-600 hover:text-black transition-colors">Contact</a>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-black/10 gap-4 font-tech">
+                <p class="text-[10px] tracking-[0.2em] text-gray-500 uppercase">
+                    © 2026 Beila Scarves. All rights reserved.
+                </p>
+                <div class="flex gap-6 text-[10px] tracking-[0.2em] text-gray-500 uppercase font-bold">
+                    <a href="#" class="hover:text-black transition-colors">Instagram</a>
+                    <a href="#" class="hover:text-black transition-colors">X</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach((elem) => observer.observe(elem));
+
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        let isMenuOpen = false;
+
+        menuBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            menuBtn.innerHTML = isMenuOpen 
+                ? '<i data-lucide="x" class="w-6 h-6"></i>' 
+                : '<i data-lucide="menu" class="w-6 h-6"></i>';
+            lucide.createIcons();
+        });
+
+        // Chart Panel Functionality
+        const chartTrigger = document.getElementById('chart-trigger');
+        const chartPanel = document.getElementById('chart-panel');
+        const chartOverlay = document.getElementById('chart-overlay');
+        const chartClose = document.getElementById('chart-close');
+        const continueShoppingBtn = chartPanel.querySelector('button:last-of-type');
+
+        function openChartPanel() {
+            chartPanel.classList.remove('translate-x-full');
+            chartOverlay.classList.remove('opacity-0', 'pointer-events-none');
+            chartOverlay.classList.add('bg-black/30');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeChartPanel() {
+            chartPanel.classList.add('translate-x-full');
+            chartOverlay.classList.add('opacity-0', 'pointer-events-none');
+            chartOverlay.classList.remove('bg-black/30');
+            document.body.style.overflow = '';
+        }
+
+        chartTrigger.addEventListener('click', openChartPanel);
+        chartClose.addEventListener('click', closeChartPanel);
+        chartOverlay.addEventListener('click', closeChartPanel);
+        continueShoppingBtn.addEventListener('click', closeChartPanel);
+
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !chartPanel.classList.contains('translate-x-full')) {
+                closeChartPanel();
+            }
+        });
+    </script>
+</body>
+</html>
