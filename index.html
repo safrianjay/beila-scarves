@@ -43,9 +43,11 @@
             transform: translateY(0);
         }
         
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
+        .fly-to-cart {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+        }
     </style>
 </head>
 <body class="selection:bg-black selection:text-white rounded-none font-tech">
@@ -86,8 +88,9 @@
                     Shop Now
                 </button>
                 
-                <button id="chart-trigger" class="text-black hover:text-gray-600 transition-colors">
+                <button id="chart-trigger" class="text-black hover:text-gray-600 transition-colors relative">
                     <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                    <span id="cart-badge" class="absolute -top-2 -right-2 bg-black text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
                 </button>
                 <button class="md:hidden text-black" id="mobile-menu-btn">
                     <i data-lucide="menu" class="w-6 h-6"></i>
@@ -99,7 +102,7 @@
     <section class="relative h-screen w-full flex items-end pb-24 md:pb-32 overflow-hidden border-b border-black/10">
         <div class="absolute inset-0 z-0 bg-gray-100">
             <img 
-                src="https://images.unsplash.com/photo-1617043786394-d1f18a62c22f?q=80&w=1200&auto=format&fit=crop" 
+                src="https://images.unsplash.com/photo-1539622505255-14470196dcfe?q=80&w=1200&auto=format&fit=crop" 
                 alt="High-Performance Modest Athlete"
                 class="w-full h-full object-cover opacity-60 grayscale mix-blend-multiply"
             />
@@ -147,7 +150,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-black/10 border-y border-black/10">
                 <a href="#" class="relative aspect-square md:aspect-[4/5] bg-gray-100 group overflow-hidden animate-on-scroll">
-                    <img src="https://images.unsplash.com/photo-1615730962057-f87c4ee1b541?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" />
+                    <img src="https://images.unsplash.com/photo-1539622505255-14470196dcfe?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" />
                     <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500"></div>
                     <div class="absolute inset-0 flex items-center justify-center">
                         <span class="text-white text-xs tracking-[0.2em] font-bold uppercase drop-shadow-md" data-i18n="campaign-premium">Premium Hijabs</span>
@@ -155,7 +158,7 @@
                 </a>
 
                 <a href="#" class="relative aspect-square md:aspect-[4/5] bg-gray-100 group overflow-hidden animate-on-scroll delay-100">
-                    <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad576?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" />
+                    <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" />
                     <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500"></div>
                     <div class="absolute inset-0 flex items-center justify-center">
                         <span class="text-white text-xs tracking-[0.2em] font-bold uppercase drop-shadow-md" data-i18n="campaign-casual">Casual Wear</span>
@@ -163,7 +166,7 @@
                 </a>
 
                 <a href="#" class="relative aspect-square md:aspect-[4/5] bg-gray-100 group overflow-hidden animate-on-scroll delay-200">
-                    <img src="https://images.unsplash.com/photo-1571844307880-751a02cda72d?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" />
+                    <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" />
                     <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500"></div>
                     <div class="absolute inset-0 flex items-center justify-center">
                         <span class="text-white text-xs tracking-[0.2em] font-bold uppercase drop-shadow-md" data-i18n="campaign-luxury">Luxury Scarves</span>
@@ -235,7 +238,7 @@
             
             <div class="animate-on-scroll min-w-[85vw] md:min-w-[400px] snap-start group relative border border-black/10 bg-white">
                 <div class="aspect-[3/4] bg-gray-100 relative overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1615730962057-f87c4ee1b541?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" />
+                    <img src="https://images.unsplash.com/photo-1539622505255-14470196dcfe?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" />
                     <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-20">
                         <button class="add-to-cart w-full bg-black text-white py-4 text-[11px] tracking-[0.2em] font-bold uppercase hover:bg-white hover:text-black border border-black transition-colors font-tech" data-i18n="collection-quick-add-85k" data-product-id="01" data-product-name="Classic Elegance Hijab" data-product-price="85000">
                             Quick Add — Rp 85.000
@@ -253,7 +256,7 @@
 
             <div class="animate-on-scroll delay-100 min-w-[85vw] md:min-w-[400px] snap-start group relative border border-black/10 bg-white">
                 <div class="aspect-[3/4] bg-gray-100 relative overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad576?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" />
+                    <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" />
                     <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-20">
                         <button class="add-to-cart w-full bg-black text-white py-4 text-[11px] tracking-[0.2em] font-bold uppercase hover:bg-white hover:text-black border border-black transition-colors font-tech" data-i18n="collection-quick-add-45k" data-product-id="02" data-product-name="Silk Premium Scarf" data-product-price="45000">
                             Quick Add — Rp 45.000
@@ -271,7 +274,7 @@
             
             <div class="animate-on-scroll delay-200 min-w-[85vw] md:min-w-[400px] snap-start group relative border border-black/10 bg-white">
                 <div class="aspect-[3/4] bg-gray-100 relative overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1571844307880-751a02cda72d?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" />
+                    <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" />
                     <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-20">
                         <button class="add-to-cart w-full bg-black text-white py-4 text-[11px] tracking-[0.2em] font-bold uppercase hover:bg-white hover:text-black border border-black transition-colors font-tech" data-i18n="collection-quick-add-65k" data-product-id="03" data-product-name="Modern Wrap Scarf" data-product-price="65000">
                             Quick Add — Rp 65.000
@@ -649,6 +652,7 @@
 
         // Cart Management System
         let cart = JSON.parse(localStorage.getItem('beilaCart')) || [];
+        const cartBadge = document.getElementById('cart-badge');
 
         const chartTrigger = document.getElementById('chart-trigger');
         const chartPanel = document.getElementById('chart-panel');
@@ -657,9 +661,54 @@
         const chartItems = document.getElementById('chart-items');
         const continueShoppingBtn = chartPanel.querySelector('button:last-of-type');
 
+        // Update Cart Badge
+        function updateCartBadge() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            if (totalItems > 0) {
+                cartBadge.textContent = totalItems;
+                cartBadge.classList.remove('hidden');
+            } else {
+                cartBadge.classList.add('hidden');
+            }
+        }
+
         // Format Rupiah Currency
         function formatRupiah(amount) {
             return 'Rp ' + amount.toLocaleString('id-ID');
+        }
+
+        // Flying Animation
+        function createFlyingAnimation(button) {
+            const cartIcon = document.querySelector('#chart-trigger i');
+            const buttonRect = button.getBoundingClientRect();
+            const cartRect = cartIcon.getBoundingClientRect();
+
+            // Create flying element
+            const flyingElement = document.createElement('div');
+            flyingElement.className = 'fly-to-cart';
+            flyingElement.innerHTML = '<i data-lucide="shopping-bag" class="w-6 h-6 bg-black text-white rounded-full p-1"></i>';
+            
+            flyingElement.style.left = buttonRect.left + 'px';
+            flyingElement.style.top = buttonRect.top + 'px';
+            flyingElement.style.width = '24px';
+            flyingElement.style.height = '24px';
+            
+            document.body.appendChild(flyingElement);
+            lucide.createIcons();
+
+            // Trigger animation
+            setTimeout(() => {
+                flyingElement.style.transition = 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                flyingElement.style.left = cartRect.left + 'px';
+                flyingElement.style.top = cartRect.top + 'px';
+                flyingElement.style.transform = 'scale(0.5)';
+                flyingElement.style.opacity = '0';
+            }, 10);
+
+            // Remove element after animation
+            setTimeout(() => {
+                flyingElement.remove();
+            }, 600);
         }
 
         // Update Cart Display
@@ -692,6 +741,7 @@
             }
 
             updateCartTotals();
+            updateCartBadge();
         }
 
         // Update Totals
@@ -709,7 +759,10 @@
         }
 
         // Add to Cart
-        function addToCart(productId, productName, productPrice) {
+        function addToCart(productId, productName, productPrice, button) {
+            // Create flying animation
+            createFlyingAnimation(button);
+
             const existingItem = cart.find(item => item.id === productId);
             
             if (existingItem) {
@@ -725,7 +778,11 @@
             
             localStorage.setItem('beilaCart', JSON.stringify(cart));
             updateCartDisplay();
-            openChartPanel();
+            
+            // Open cart after a short delay
+            setTimeout(() => {
+                openChartPanel();
+            }, 300);
         }
 
         // Remove from Cart
@@ -748,6 +805,7 @@
                 cart[index].quantity -= 1;
             } else {
                 window.removeFromCart(index);
+                return;
             }
             localStorage.setItem('beilaCart', JSON.stringify(cart));
             updateCartDisplay();
@@ -759,7 +817,7 @@
                 const productId = button.dataset.productId;
                 const productName = button.dataset.productName;
                 const productPrice = parseFloat(button.dataset.productPrice);
-                addToCart(productId, productName, productPrice);
+                addToCart(productId, productName, productPrice, button);
             });
         });
 
