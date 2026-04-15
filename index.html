@@ -47,6 +47,14 @@
             position: fixed;
             pointer-events: none;
             z-index: 9999;
+            background: black;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .fly-to-cart i {
+            color: white;
         }
     </style>
 </head>
@@ -664,6 +672,7 @@
         // Update Cart Badge
         function updateCartBadge() {
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            console.log('Badge update - Total items:', totalItems);
             if (totalItems > 0) {
                 cartBadge.textContent = totalItems;
                 cartBadge.classList.remove('hidden');
@@ -679,36 +688,36 @@
 
         // Flying Animation
         function createFlyingAnimation(button) {
-            const cartIcon = document.querySelector('#chart-trigger i');
             const buttonRect = button.getBoundingClientRect();
-            const cartRect = cartIcon.getBoundingClientRect();
+            const chartRect = chartTrigger.getBoundingClientRect();
 
             // Create flying element
             const flyingElement = document.createElement('div');
             flyingElement.className = 'fly-to-cart';
-            flyingElement.innerHTML = '<i data-lucide="shopping-bag" class="w-6 h-6 bg-black text-white rounded-full p-1"></i>';
+            flyingElement.style.width = '32px';
+            flyingElement.style.height = '32px';
+            flyingElement.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>';
             
+            // Set initial position (use screen coordinates)
             flyingElement.style.left = buttonRect.left + 'px';
             flyingElement.style.top = buttonRect.top + 'px';
-            flyingElement.style.width = '24px';
-            flyingElement.style.height = '24px';
             
             document.body.appendChild(flyingElement);
-            lucide.createIcons();
+            console.log('Flying animation created from', buttonRect.left, buttonRect.top, 'to', chartRect.right, chartRect.top);
 
-            // Trigger animation
+            // Trigger animation with slight delay
             setTimeout(() => {
-                flyingElement.style.transition = 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-                flyingElement.style.left = cartRect.left + 'px';
-                flyingElement.style.top = cartRect.top + 'px';
-                flyingElement.style.transform = 'scale(0.5)';
+                flyingElement.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                flyingElement.style.left = (chartRect.right - 15) + 'px';
+                flyingElement.style.top = (chartRect.top - 5) + 'px';
+                flyingElement.style.transform = 'scale(0.2)';
                 flyingElement.style.opacity = '0';
-            }, 10);
+            }, 50);
 
             // Remove element after animation
             setTimeout(() => {
                 flyingElement.remove();
-            }, 600);
+            }, 850);
         }
 
         // Update Cart Display
@@ -760,8 +769,12 @@
 
         // Add to Cart
         function addToCart(productId, productName, productPrice, button) {
+            console.log('addToCart called with:', { productId, productName, productPrice, button });
+            
             // Create flying animation
-            createFlyingAnimation(button);
+            if (button) {
+                createFlyingAnimation(button);
+            }
 
             const existingItem = cart.find(item => item.id === productId);
             
@@ -776,6 +789,7 @@
                 });
             }
             
+            console.log('Cart after adding:', cart);
             localStorage.setItem('beilaCart', JSON.stringify(cart));
             updateCartDisplay();
             
