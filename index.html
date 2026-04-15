@@ -43,6 +43,14 @@
             transform: translateY(0);
         }
         
+        .badge-notification {
+            display: none;
+            transform: translate(2px, -2px);
+        }
+        .badge-notification:not(.hidden) {
+            display: flex !important;
+        }
+        
         .fly-to-cart {
             position: fixed;
             pointer-events: none;
@@ -98,7 +106,7 @@
                 
                 <button id="chart-trigger" class="text-black hover:text-gray-600 transition-colors relative">
                     <i data-lucide="shopping-bag" class="w-5 h-5"></i>
-                    <span id="cart-badge" class="absolute -top-2 -right-2 bg-black text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                    <span id="cart-badge" class="badge-notification absolute top-0 right-0 bg-black text-white text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center leading-none hidden">0</span>
                 </button>
                 <button class="md:hidden text-black" id="mobile-menu-btn">
                     <i data-lucide="menu" class="w-6 h-6"></i>
@@ -672,12 +680,18 @@
         // Update Cart Badge
         function updateCartBadge() {
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            console.log('Badge update - Total items:', totalItems);
+            console.log('Badge update - Total items:', totalItems, 'Badge element:', cartBadge);
+            
+            cartBadge.textContent = totalItems;
+            
             if (totalItems > 0) {
-                cartBadge.textContent = totalItems;
+                cartBadge.classList.add('visible');
                 cartBadge.classList.remove('hidden');
+                console.log('Badge shown with', totalItems, 'items');
             } else {
                 cartBadge.classList.add('hidden');
+                cartBadge.classList.remove('visible');
+                console.log('Badge hidden');
             }
         }
 
@@ -862,7 +876,9 @@
         });
 
         // Initialize cart display
+        console.log('Initializing cart with items:', cart);
         updateCartDisplay();
+        updateCartBadge();
     </script>
 </body>
 </html>
